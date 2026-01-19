@@ -13,7 +13,12 @@ const PORT = process.env.PORT || 3000;
 
 app.use(helmet());
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5000',
+  origin: [
+    'http://localhost:5000',
+    'http://127.0.0.1:5000',
+    'https://dreamingmap.vercel.app',
+    /\.vercel\.app$/
+  ],
   credentials: true
 }));
 app.use(express.json());
